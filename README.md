@@ -13,7 +13,7 @@ font-family: "Inter", sans-serif; // DESCRIPTION FONT
 font-size: 1rem; // 16px;
 
 :root {
-  accent-color: #00ffff; // BUTTON COLOR & TIMER COLOR
-  answer-button-color: #d20094; // HOVER ANSWER COLOR & onClick COLOR
-  answer-btn-colorv2: #900080; // number count color
+  --accent-color: #00ffff; // BUTTON COLOR & TIMER COLOR
+  --answer-button-color: #d20094; // HOVER ANSWER COLOR & onClick COLOR
+  --answer-count-color: #900080; // number count color
 }
