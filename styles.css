@@ -119,3 +119,8 @@ h3 {
   align-items: center;
   justify-content: center;
 }
+
+.checkbox-container input[type="checkbox"]:checked + .custom-check{
+   background: var(--accent-color);
+   border-color: var(--accent-color);
+}
