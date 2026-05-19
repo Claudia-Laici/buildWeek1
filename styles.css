@@ -89,6 +89,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
   margin-top: 5rem;
+  width: 1400px; 
 }
 
 .checkbox-container {
@@ -120,4 +121,23 @@ h3 {
 .checkbox-container input[type="checkbox"]:checked + .custom-check{
    background: var(--accent-color);
    border-color: var(--accent-color);
+}
+
+#proceed-btn{
+  border: none;
+  cursor: pointer;
+  padding: 0.9rem 2.5rem;
+}
+
+.btn-disabled {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+}
+
+.btn-enabled {
+  background-color: var(--accent-color);
+  box-shadow:0 0 16px rgba(0, 255, 255, 0.45),
+              0 0 40px rgba(0, 255, 255, 0.15) ;
+  color: #0d1035;
 }
