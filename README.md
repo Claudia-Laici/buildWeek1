@@ -17,3 +17,7 @@ font-size: 1rem; // 16px;
   --answer-button-color: #d20094; // HOVER ANSWER COLOR & onClick COLOR
   --answer-count-color: #900080; // number count color
 }
+
+L'operatore tilde in CSS ( ~ )
+noto come combinatore di fratelli successivi, seleziona un elemento che segue un altro specifico elemento (condividendo lo stesso genitore).
+NON richiede che l'elemento sia immediatamente successivo, ma può trovarsi ovunque più avanti nel documento

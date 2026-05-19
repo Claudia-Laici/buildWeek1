@@ -21,16 +21,24 @@ font-size: 1rem; // 16px;
 }
 
 body {
-  background-image: url(./assets/bg.jpg) no-repeat center center fixed;
-  /* background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center; */
+  background: #0b0e27 url('./assets/bg.jpg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+/* // QUESTI li ho messi su background: riga 24
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+*/
+
 
 .container {
   /* padding: 1.5rem 2.5rem; */
@@ -44,6 +52,8 @@ body {
   margin-bottom: 50px;
 }
 
+
+/* WELCOME CONTENT PAGE */
 .welcome-content {
   display: flex;
   flex-direction: column;
@@ -55,13 +65,15 @@ body {
 h1,
 h3 {
   font-family: "Outfit", sans-serif;
-  font-size: 3.75rem;
   font-weight: 400;
+  line-height: 1.1;
 }
 
 h1 {
-    line-height: 0.8;
-    margin: 15px 0;
+  font-size: 3.75rem;
+  line-height: 0.8;
+  font-weight: 300;
+  margin-bottom: 30px;
 }
 
 .highlight-title {
@@ -73,15 +85,20 @@ h1 {
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--answer-button-color);
-   margin-bottom: 8px;
+  margin-bottom: 10px;
+}
+.instructions p {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .rules {
-  padding-left: 1.7rem;
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  margin-top: 20px;
+  padding-left: 1.7rem;
+  margin-top: 20px 0 50px;
+  margin-bottom: 5rem;
 }
 
 .highlight {
@@ -93,68 +110,104 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 5rem;
-  min-width: 760px; 
+  flex-wrap: wrap;
+  gap: 20px;
+  min-width: 760px;
 }
 
+
+/* CUSTOM CHECKBOX */
 .checkbox-container {
   display: flex;
   align-items: center;
+  position: relative;
   gap: 0.5rem;
-  cursor: pointer;
+  font-size: 1rem;
   user-select: none;
+  cursor: pointer;
 }
 
-.checkbox-container input[type="checkbox"] {
+/* .checkbox-container input[type="checkbox"] {
   position: absolute;
   opacity: 0;
+} */
+.checkbox-container input {
+  position: absolute;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .custom-check {
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgb(255, 255, 255);
-  display: flex;
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  display: inline-block; /* display: flex; */
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  transition: all 0.2s ease;
 }
 
-.checkbox-container input[type="checkbox"]:checked + .custom-check{
+/* .checkbox-container input[type="checkbox"]:checked + .custom-check{
    background: var(--accent-color);
    border-color: var(--accent-color);
+} */
+.checkbox-container input:checked ~ .custom-check { /* ~ guarda in readme.md */
+  background-color: var(--accent-color); /* COLOR of BORDER on click */
+  border-color: white; /* BORDER COLOR of CHECKBOX */
+  box-shadow: 0 0 8px var(--accent-color); /* SHADOW COLOR */
 }
 
-#proceed-btn{
+
+
+/* BUTTONS */
+button {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
-  padding: 0.9rem 2.5rem;
+  transition: all 0.3s ease;
+}
+
+#proceed-btn {
+  padding: 0.938rem 2.813rem; /* 15px 45px */
+  font-size: 1.1rem;
+  letter-spacing: 1px;
 }
 
 .btn-disabled {
   background-color: rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
 }
 
+/* CSS per JS */
 .btn-enabled {
-  background-color: var(--accent-color);
-  box-shadow:0 0 16px rgba(0, 255, 255, 0.45),
-              0 0 40px rgba(0, 255, 255, 0.15) ;
+  background: var(--accent-color);
+  /* box-shadow:0 0 16px rgba(0, 255, 255, 0.45),
+              0 0 40px rgba(0, 255, 255, 0.15) ; */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
   color: #0d1035;
+}
+.btn-enabled:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.9);
 }
 
 .hidden {
-  display: none;
-=======
-@media(max-width: 768px){
+  display: none !important;
+}
+
+@media(max-width: 768px) {
   .welcome-footer {
     flex-direction: column;
     align-items: center; 
     min-width: unset; 
     width: 100%; 
     gap: 15px; 
+  }
 }
->>>>>>> 93ebaa57d2466fd98e26875cdfe97cfada2db732
-}
+
+/* QUIZ PAGE SECTION */
