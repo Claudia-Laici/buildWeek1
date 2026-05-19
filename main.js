@@ -18,5 +18,3 @@ proceedBtn.addEventListener("click", function () {
     welcomePage.style.display = "none";
     divQuestions.classList.remove("hidden");
 });
-
-
