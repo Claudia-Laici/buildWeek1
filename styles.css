@@ -140,6 +140,10 @@ h3 {
   color: #0d1035;
 }
 
+<<<<<<< HEAD
+.hidden {
+  display: none;
+=======
 @media(max-width: 768px){
   .welcome-footer {
     flex-direction: column;
@@ -148,4 +152,5 @@ h3 {
     width: 100%; 
     gap: 15px; 
 }
+>>>>>>> 93ebaa57d2466fd98e26875cdfe97cfada2db732
 }
