@@ -42,25 +42,77 @@ body {
 }
 
 .logo {
-   height: 36px;
-   width: auto;
+  height: 36px;
+  width: auto;
 }
 
 .welcome-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;                 
+  gap: 1.5rem;
   padding: 2rem 2.5rem 4rem;
-  max-width: 660px; 
-}           
+  max-width: 660px;
+}
 
-h1 {
+h1,
+h3 {
   font-family: "Outfit", sans-serif;
   font-size: 3.75rem;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .highlight-title {
-  display: block;            
+  display: block;
   font-weight: 700;
+}
+
+.instructions h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--answer-button-color);
+}
+
+.rules {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.highlight {
+  font-weight: 700;
+  color: white;
+}
+
+.welcome-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom-check {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid rgb(255, 255, 255);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
