@@ -21,19 +21,24 @@ font-size: 1rem; // 16px;
 }
 
 body {
-  background-image: url(assets/bg.jpg);
-  background-repeat: no-repeat;
+  background: #0b0e27 url(./assets/bg.jpg) no-repeat center center fixed;
+  /* background-repeat: no-repeat; // aggiunto su background: */
+  /* background-position: center;  // aggiunto su background: */ 
+  /* background-attachment: fixed; // aggiunto su background: */
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   color: white;
+  /* display: flex; aggiunto da: PAULO */
+  /* justify-content: center; aggiunto da: PAULO */
+  /* align-items: center; aggiunto da: PAULO */
 }
 
 .container {
-  padding: 1.5rem 2.5rem;
+  width: 100%;
+  padding: 2.5rem;
+  max-width: 900px;
 }
 
 .header {
@@ -41,9 +46,15 @@ body {
   align-items: center;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .logo {
-   height: 36px;
-   width: auto;
+   /* height: 36px;
+   width: auto; */
+   max-width: 160px;
+   margin-bottom: 50px;
 }
 
 .welcome-content {
@@ -54,6 +65,7 @@ body {
   max-width: 660px; 
 }           
 
+/* WELCOME SCREEN */
 h1 {
   font-family: "Outfit", sans-serif;
   font-size: 3.75rem;
