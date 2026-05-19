@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,9 +10,28 @@
 
     <div class="container">
       <header>
-        <img src="./assets/epicode_logo.png" alt="Epicode ">
+        <img src="./assets/epicode_logo.png" alt="Epicode Logo" class="logo">
       </header>
     </div>
+
+    <main class="welcome-content">
+      <h1>Welcome to <span class="highlight-title">your exam</span></h1>
+
+      <div class="instructions">
+        <h3>Instructions</h3>
+        <p>
+          We don't expect most engineers to know what the answers to all of these
+          questions, so don't worry if you're unsure of a few of them.
+        </p>
+      </div>
+
+      <ul class="rules">
+        <li>Each question is <span class="highlight">timed</span> and can only be<span class="highlight">answered once</span>.</li>
+        <li>Changing browser tab or opening other windows will <span class="highlight">invalidate the question</span>.</li>
+        <li>This exam will take approx. <span class="highlight">0-5 minutes</span>.</li>
+      </ul>
+
+    </main>
 
     <script src="./main.js"></script>
   </body>
