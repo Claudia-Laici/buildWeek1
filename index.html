@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-
+    <!-- HEADER -->
     <div class="container">
       <header>
         <img src="./assets/epicode_logo.png" alt="Epicode Logo" class="logo">
       </header>
     </div>
 
+    <!-- MAIN CONTENT -->
     <main class="welcome-content">
-      <h1>Welcome to <span class="highlight-title">your exam</span></h1>
+      <h1>Welcome to <span class="highlight-title">your exam</span></h1> <!-- TITLE -->
 
-      <div class="instructions">
+      <div class="instructions"> 
         <h3>Instructions</h3>
         <p>
           We don't expect most engineers to know what the answers to all of these
@@ -25,13 +26,29 @@
         </p>
       </div>
 
+      <!-- RULES CONTENT -->
       <ul class="rules">
         <li>Each question is <span class="highlight">timed</span> and can only be<span class="highlight">answered once</span>.</li>
         <li>Changing browser tab or opening other windows will <span class="highlight">invalidate the question</span>.</li>
         <li>This exam will take approx. <span class="highlight">0-5 minutes</span>.</li>
       </ul>
 
+      <!-- FOOTER w/ "checkbox" -->
+      <div class="welcome-footer">
+        <label class="checkbox-container">
+          <input type="checkbox" id="promise-check">
+          <span class="custom-check"></span>
+          I promise to answer myself without help from anyone
+        </label>
+
+        <button id="proceed-btn" class="btn-disabled" disabled>PROCEED</button> <!-- BUTTON PROCEED -->
+      </div>
     </main>
+
+    <!-- DIV for questions -->
+    <div class="container-hidden" id="questions">
+
+    </div>
 
     <script src="./main.js"></script>
   </body>
