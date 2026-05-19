@@ -70,16 +70,18 @@ h1 {
 }
 
 .instructions h3 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--answer-button-color);
+   margin-bottom: 8px;
 }
 
 .rules {
-  padding-left: 1.25rem;
+  padding-left: 1.7rem;
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
+  margin-top: 20px;
 }
 
 .highlight {
@@ -92,7 +94,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   margin-top: 5rem;
-  min-width: 740px; 
+  min-width: 760px; 
 }
 
 .checkbox-container {
@@ -144,9 +146,8 @@ h1 {
 }
 
 .hidden {
-  display: none !important;
-}
-
+  display: none;
+=======
 @media(max-width: 768px){
   .welcome-footer {
     flex-direction: column;
@@ -154,5 +155,6 @@ h1 {
     min-width: unset; 
     width: 100%; 
     gap: 15px; 
-  }
+}
+>>>>>>> 93ebaa57d2466fd98e26875cdfe97cfada2db732
 }
