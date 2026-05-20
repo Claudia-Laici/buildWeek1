@@ -56,7 +56,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 2rem 2.5rem 4rem;
+  padding: 2rem 2.5rem 4rem; /*da rivedere come la reference se allineare il tutto o lasciarlo così*/
   max-width: 700px;
 }
 
@@ -110,7 +110,7 @@ h1 {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
-  min-width: 760px;
+  min-width: 780px;
 }
 
 /* CUSTOM CHECKBOX */
@@ -207,19 +207,31 @@ button {
 }
 
 /* QUIZ PAGE SECTION */
-.timer-container {
+.exam-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.timer-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timer-svg {
-
+  position: absolute;
 }
 
-
 .timer-text {
-
+  font-family:  "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
 }
 
 #timer-count {
-  
+   font-size: 4rem;
 }
