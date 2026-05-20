@@ -15,13 +15,13 @@ font-size: 1rem; // 16px;
 */
 
 :root {
-  --accent-color: #00ffff;   /* BUTTON COLOR & TIMER COLOR */
-  --answer-button-color: #d20094;   /* HOVER ANSWER COLOR & onClick COLOR */
-  --answer-count-color: #900080;   /* number count color */
+  --accent-color: #00ffff; /* BUTTON COLOR & TIMER COLOR */
+  --answer-button-color: #d20094; /* HOVER ANSWER COLOR & onClick COLOR */
+  --answer-count-color: #900080; /* number count color */
 }
 
 body {
-  background: #0b0e27 url('./assets/bg.jpg') no-repeat center center fixed;
+  background: #0b0e27 url("./assets/bg.jpg") no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
@@ -39,7 +39,6 @@ body {
 }
 */
 
-
 .container {
   /* padding: 1.5rem 2.5rem; */
   width: 100%;
@@ -51,7 +50,6 @@ body {
   max-width: 160px;
   margin-bottom: 50px;
 }
-
 
 /* WELCOME CONTENT PAGE */
 .welcome-content {
@@ -115,7 +113,6 @@ h1 {
   min-width: 760px;
 }
 
-
 /* CUSTOM CHECKBOX */
 .checkbox-container {
   display: flex;
@@ -153,13 +150,12 @@ h1 {
    background: var(--accent-color);
    border-color: var(--accent-color);
 } */
-.checkbox-container input:checked ~ .custom-check { /* ~ guarda in readme.md */
+.checkbox-container input:checked ~ .custom-check {
+  /* ~ guarda in readme.md */
   background-color: var(--accent-color); /* COLOR of BORDER on click */
   border-color: white; /* BORDER COLOR of CHECKBOX */
   box-shadow: 0 0 8px var(--accent-color); /* SHADOW COLOR */
 }
-
-
 
 /* BUTTONS */
 button {
@@ -200,14 +196,30 @@ button {
   display: none !important;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .welcome-footer {
     flex-direction: column;
-    align-items: center; 
-    min-width: unset; 
-    width: 100%; 
-    gap: 15px; 
+    align-items: center;
+    min-width: unset;
+    width: 100%;
+    gap: 15px;
   }
 }
 
 /* QUIZ PAGE SECTION */
+.timer-container {
+
+}
+
+.timer-svg {
+
+}
+
+
+.timer-text {
+
+}
+
+#timer-count {
+  
+}
