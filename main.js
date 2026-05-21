@@ -144,6 +144,44 @@ startExam(); // onclick del button, parte la funzione
 
 /* PHASE 2: BENCHMARK | Q&A LOGICA */
 function startExam() {
-    currentQuestNum = 0;
-    score = 0;
+
+  let domanda = questions[currentQuestion];   // prendo la domanda corrente dall'array
+  questionText.textContent = domanda.question;   // mostro il testo della domanda nel h2 
+
+  let risposte = domanda.incorrect_answers.concat(domanda.correct_answer);    // unisco risposte corrette + sbagliate
+
+  risposte.sort(function () {                        // mescolo le risposte
+    return Math.random() - 0.5;
+  });
+
+  optionsDiv.innerHTML = "";                         // svuoto il container delle domande
+
+  for (let i = 0; i < risposte.length; i++) {             // ciclo di tutte le risposte
+    let bottone = document.createElement("button");      // creo un bottone
+    bottone.textContent = risposte[i];                   // assegna il testo della risposta al bottone
+    bottone.classList.add("answer-btn");                // aggiunge classe CSS
+
+    bottone.addEventListener("click", function () {
+
+      if (risposte[i] === domanda.correct_answer) {         // controllo risposta corretta
+        score++;
+      }
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {              // prossima domanda se ci sono ancora domande
+
+        startExam();                                    // ricarica la funzione con la nuova domanda
+
+      } else {
+
+        questionText.textContent = "Quiz completato!";
+        optionsDiv.innerHTML = "";
+
+      }
+    });
+
+    optionsDiv.appendChild(bottone);                     // aggiungo il bottone nel container
+  }
+
+  currentQuestNum.textContent = currentQuestion + 1;       // aggiorno numero domanda
 }
