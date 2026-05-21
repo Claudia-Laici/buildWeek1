@@ -210,7 +210,8 @@ button {
 .exam-header{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+   align-items: flex-start;
+  /*align-items: center;*/
   margin-bottom: 60px;
 }
 
@@ -220,8 +221,8 @@ button {
 
 .timer-container {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 120px; /*era 100*/
+  height: 120px; /*era 100*/
   /* display: flex;
   align-items: center;
   justify-content: center; */
@@ -237,14 +238,15 @@ button {
 .timer-bg {
   fill: none;
   stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 6;
+  stroke-width: 10; /*era 6*/
 }
 .timer-progress { /* class="timer-bg" */
   fill: none;
   stroke: var(--accent-color);
-  stroke-width: 6;
+  stroke-width: 10; /*era 6*/
   stroke-linecap: round;
-  stroke-dasharray: 264; /* 2 * pi * r (r=42) */
+  stroke-dasharray: 339; /* ora è 2 * pi * r (r=54) = 339 */
+  /* prima era 2 * pi * r (r=42) */ 
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1s linear;
 }
@@ -268,8 +270,8 @@ button {
   color: rgba(255, 255, 255, 0.95);
 }
 #timer-count {
-  font-size: 1.8rem;
-  font-weight: 600;
+  font-size: 2.2rem;
+  font-weight: 400;
 }
 .timer-bottom {
   font-size: 0.5rem;
@@ -294,4 +296,16 @@ button {
   gap: 20px;
   max-width: 800px;
   margin: 40px auto;
+}
+
+.progress-indicator{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.total-questions {
+  color: var(--answer-count-color);
+  font-weight: 600;
 }
