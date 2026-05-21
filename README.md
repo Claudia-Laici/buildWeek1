@@ -19,7 +19,6 @@ Ricreare un’esperienza d’esame moderna e interattiva composta da:
 3. Gestione timer
 4. Gestione avanzamento domande
 5. Validazione del form iniziale
-6. UI responsive
 
 <br>
 
@@ -79,7 +78,34 @@ Il pulsante **Proceed** deve rimanere:
 
 <br>
 
+---
+
+# Pagina Quiz
+
+## Contenuto
+
+- Una domanda alla volta
+- Risposte multiple / vero-falso
+- Cambio automatico domanda appena si clicca sulla risposta
+- Timer di 60 secondi
+
+<br>
+
+---
+
+# Timer
+
+Ogni domanda:
+
+- parte da 60 secondi
+- si resetta automaticamente
+- passa alla domanda successiva allo scadere del tempo
+
+<br>
+
 -----
+
+# Appunti
 
 CSS: Outfit & INTER FONT
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
