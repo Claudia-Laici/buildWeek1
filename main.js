@@ -118,7 +118,7 @@ const currentQuestNum = document.getElementById('current-quest-num') // ID HTML 
 const timerProgress = document.getElementById('timer-progress') // ID HTML riga: 59
 const timerCount = document.getElementById('timer-count') // ID HTML riga: 64
 
-const welcomePage = document.querySelector(".welcome-content");
+/*const welcomePage = document.querySelector(".welcome-content"); --> questo era errato in quanto avevamo già la funzione sopra welcomeContainer che era quella giusta per nascondere tutti gli elementi*/ 
 
 promiseCheckbox.addEventListener("change", function () {
     if (this.checked) {
@@ -136,7 +136,7 @@ proceedBtn.addEventListener("click", function () {
 });
 */
 proceedBtn.addEventListener("click", function () {
-    welcomePage.classList.add("hidden"); // .hidden class in CSS
+    welcomeContainer.classList.add("hidden"); // .hidden class in CSS
     questPage.classList.remove("hidden");
 startExam(); // onclick del button, parte la funzione
 });
