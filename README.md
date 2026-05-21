@@ -99,3 +99,27 @@ font-size: 1rem; // 16px;
 L'operatore tilde in CSS ( ~ )
 noto come combinatore di fratelli successivi, seleziona un elemento che segue un altro specifico elemento (condividendo lo stesso genitore).
 NON richiede che l'elemento sia immediatamente successivo, ma può trovarsi ovunque più avanti nel documento
+
+### JS: riga 101 - 106 ###
+let currentQuestion = 0;
+// Tiene traccia del numero della domanda che l'utente sta visualizzando, inizia da
+// 0 (la prima domanda negli array JS)
+
+let score = 0;
+// Memorizza il numero di risposte corrette selezionate finora dall'utente
+// Inizia da 0 e aumenta di 1 (uno) ogni volta che l'utente seleziona una risposta corretta.
+
+let timerInterval = null;
+// Questo contiene il meccanismo del timer in background, sopra in alto a destra
+// Inizialmente è NULL perchè l'orologio non è ancora in funzione, finchè non viene caricata la prima domanda.
+
+let timeLeft = 30; 
+// E' il contatore in tempo reale che mosta quanti secondo mancano alla domanda apparsa e si aggiorna fino a 0
+
+const TEMP_LIMIT = 30; // Secondi per ogni domanda
+// Un tempo impostato fix che definisce il tempo massimo consentito per ogni domanda
+// Essendo una CONST, questo numero non cambia mai durante l'esame
+
+let selectedAnswer = null;
+// Memorizza temporaneamente il testo della risposta su cui l'utente ha cliccato prima di procedere
+// Inizia come NULL perchè non è stata ancora selezionata alcuna risposta
