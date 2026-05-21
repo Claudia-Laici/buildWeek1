@@ -50,22 +50,22 @@
 
     <!-- DIV for questions -->
     <div class="container hidden" id="questions-page" onclick="">
-    <header class="exam-header">
-      <img src="./assets/epicode_logo.png" alt="Epicode Logo" class="logo-small">
+      <header class="exam-header">
+        <img src="./assets/epicode_logo.png" alt="Epicode Logo" class="logo-small">
 
-      <div class="timer-container">
-        <svg class="timer-svg" viewBox="0 0 100 100">
-          <circle class="timer-bg" cx="50" cy="50" r="42"></circle>
-          <circle id="timer-progress" class="timer-progress" cx="50" cy="50" r="42"></circle>
-        </svg>
+        <div class="timer-container">
+          <svg class="timer-svg" viewBox="0 0 100 100">
+            <circle class="timer-bg" cx="50" cy="50" r="42"></circle>
+            <circle id="timer-progress" class="timer-progress" cx="50" cy="50" r="42"></circle>
+          </svg>
 
-        <div class="timer-text">
-          <span class="timer-top">SECONDS</span>
-          <span id="timer-count">30</span> <!--aggiunto id-->
-          <span class="timer-bottom">REMAINING</span>
+          <div class="timer-text">
+            <span class="timer-top">SECONDS</span>
+            <span id="timer-count">30</span> <!--aggiunto id-->
+            <span class="timer-bottom">REMAINING</span>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
     <main class="quiz-content">
       <h2 id="question-text">Loading question...</h2>
@@ -74,10 +74,9 @@
       </div>
     </main>
 
-    <footer>
-      <p class="progress-indicator">QUESTION <span id="current-quest-num">1</span> /10</p>
-    </footer>
-
+      <footer>
+        <p class="progress-indicator">QUESTION <span id="current-quest-num">1</span> /10</p>
+      </footer>
     </div>
 
     <script src="./main.js"></script>
