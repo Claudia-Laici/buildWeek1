@@ -98,7 +98,7 @@ const questions = [
   },
 ];
 /*            LOGICA per le domande: vedi su README.md riga 103-125               */
-let currentQuestion = 0;
+let questionNumber = 0;
 let score = 0;
 let timerInterval = null;
 let timeLeft = 30;
@@ -147,7 +147,7 @@ proceedBtn.addEventListener("click", function () {
 /* PHASE 2: BENCHMARK | Q&A LOGICA */
 function startExam() {
 
-  let domanda = questions[currentQuestion];   // prendo la domanda corrente dall'array
+  let domanda = questions[questionNumber];   // prendo la domanda corrente dall'array
   questionText.textContent = domanda.question;   // mostro il testo della domanda nel h2 
 
   let risposte = domanda.incorrect_answers.concat(domanda.correct_answer);    // unisco risposte corrette + sbagliate
@@ -168,9 +168,9 @@ function startExam() {
       if (risposte[i] === domanda.correct_answer) {         // controllo risposta corretta
         score++;
       }
-      currentQuestion++;
+      questionNumber++;
 
-      if (currentQuestion < questions.length) {              // prossima domanda se ci sono ancora domande
+      if (questionNumber < questions.length) {              // prossima domanda se ci sono ancora domande
         startExam();                                    // ricarica la funzione con la nuova domanda
 
       } else {
@@ -188,5 +188,5 @@ function startExam() {
     optionsDiv.appendChild(bottone);                     // aggiungo il bottone nel container
   }
 
-  currentQuestNum.textContent = currentQuestion + 1;       // aggiorno numero domanda
+  currentQuestNum.textContent = questionNumber + 1;       // aggiorno numero domanda
 }
