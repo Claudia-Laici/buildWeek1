@@ -98,12 +98,12 @@ const questions = [
   },
 ];
 /*            LOGICA per le domande: vedi su README.md riga 103-125               */
-let currentQuestion = 0; 
-let score = 0; 
-let timerInterval = null; 
-let timeLeft = 30; 
+let currentQuestion = 0;
+let score = 0;
+let timerInterval = null;
+let timeLeft = 30;
 const TEMP_LIMIT = 30; // Secondi per ogni domanda
-let selectedAnswer = null; 
+let selectedAnswer = null;
 
 
 /*                  TUTTI I DOM SELECTORS BY ID             */
@@ -117,17 +117,19 @@ const optionsDiv = document.getElementById('options-container') // ID HTML riga:
 const currentQuestNum = document.getElementById('current-quest-num') // ID HTML riga: 78
 const timerProgress = document.getElementById('timer-progress') // ID HTML riga: 59
 const timerCount = document.getElementById('timer-count') // ID HTML riga: 64
+const finalScore = document.getElementById("final-score"); // ID HTML riga: 89
+const resultsScreen = document.getElementById("results-screen"); // ID HTML riga: 83
 
-/*const welcomePage = document.querySelector(".welcome-content"); --> questo era errato in quanto avevamo già la funzione sopra welcomeContainer che era quella giusta per nascondere tutti gli elementi*/ 
+/*const welcomePage = document.querySelector(".welcome-content"); --> questo era errato in quanto avevamo già la funzione sopra welcomeContainer che era quella giusta per nascondere tutti gli elementi*/
 
 promiseCheckbox.addEventListener("change", function () {
-    if (this.checked) {
-        proceedBtn.disabled = false;
-        proceedBtn.className = "btn-enabled";
-    } else {
-        proceedBtn.disabled = true;
-        proceedBtn.className = "btn-disabled";
-    }
+  if (this.checked) {
+    proceedBtn.disabled = false;
+    proceedBtn.className = "btn-enabled";
+  } else {
+    proceedBtn.disabled = true;
+    proceedBtn.className = "btn-disabled";
+  }
 });
 /*
 proceedBtn.addEventListener("click", function () {
@@ -136,9 +138,9 @@ proceedBtn.addEventListener("click", function () {
 });
 */
 proceedBtn.addEventListener("click", function () {
-    welcomeContainer.classList.add("hidden"); // .hidden class in CSS
-    questPage.classList.remove("hidden");
-startExam(); // onclick del button, parte la funzione
+  welcomeContainer.classList.add("hidden"); // .hidden class in CSS
+  questPage.classList.remove("hidden");
+  startExam(); // onclick del button, parte la funzione
 });
 
 
@@ -169,7 +171,6 @@ function startExam() {
       currentQuestion++;
 
       if (currentQuestion < questions.length) {              // prossima domanda se ci sono ancora domande
-
         startExam();                                    // ricarica la funzione con la nuova domanda
 
       } else {
@@ -177,6 +178,10 @@ function startExam() {
         questionText.textContent = "Quiz completato!";
         optionsDiv.innerHTML = "";
 
+        questPage.classList.add("hidden");        // nasconde quiz
+        resultsScreen.classList.remove("hidden"); // mostra risultati
+
+        finalScore.textContent = score;           // mostra punteggio
       }
     });
 
