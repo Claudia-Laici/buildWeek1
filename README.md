@@ -105,6 +105,45 @@ Ogni domanda:
 
 -----
 
+
+## Funzione renderQuestion() // riga 214
+
+Questa funzione serve per mettere automaticamente in **grassetto l’ultima riga** di una domanda quando il testo va a capo.
+
+### Come funziona
+
+1. La domanda viene divisa parola per parola usando `split(" ")`.
+2. Ogni parola viene inserita dentro uno `<span>` separato.
+3.  Dopo il rendering del browser, la funzione usa
+`requestAnimationFrame()` per aspettare il corretto calcolo del layout
+e `getBoundingClientRect()` per rilevare il ritorno a capo reale del testo.
+4. Confrontando le coordinate, individua dove inizia l’ultima riga del testo.
+5. Ricostruisce infine il contenuto mettendo l’ultima riga dentro un tag `<strong>`.
+
+### Esempio
+
+Testo originale:
+
+```txt
+Qual è la capitale della Francia
+```
+Output renderizzato:
+```txt
+Qual è la capitale della
+FRANCIA
+```
+
+
+### Tecniche utilizzate
+1. split() per dividere la stringa
+2. createElement() per creare dinamicamente gli span
+3. getBoundingClientRect() per rilevare il ritorno a capo reale del browser
+4. slice() e join() per ricostruire il testo finale
+
+<br>
+
+-----
+
 # Appunti
 
 CSS: Outfit & INTER FONT

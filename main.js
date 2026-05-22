@@ -122,7 +122,6 @@ questions.sort(function () {
   return Math.random() - 0.5;
 });
 
-
 promiseCheckbox.addEventListener("change", function () {
   if (this.checked) {
     proceedBtn.disabled = false;
@@ -147,7 +146,10 @@ proceedBtn.addEventListener("click", function () {
 /* PHASE 2: BENCHMARK | Q&A LOGICA */
 function startExam() {
   let domanda = questions[questionNumber]; // prendo la domanda corrente dall'array
-  questionText.textContent = domanda.question; // mostro il testo della domanda nel h2
+  renderQuestion(
+    domanda,
+  ); /*passo il parametro per controllare se il testo è accapo o no*/
+  /*questionText.textContent = domanda.question; // mostro il testo della domanda nel h2*/
 
   let risposte = domanda.incorrect_answers.concat(domanda.correct_answer); // unisco risposte corrette + sbagliate
 
@@ -207,4 +209,58 @@ function selectAnswer(selectedButton, textValue) {
   selectedButton.classList.add("selected"); // .selected in CSS: riga 315
 
   // TODO: qui metteremo la FUNCTION che: passa immediatamente alla domanda successiva senza ritardo
+}
+
+/*Funzione per far si che ogni volta che la domanda va accapo si mette il grassetto come nella reference*/
+function renderQuestion(domanda) { // la funzione viene spiegata anche nel readme
+  // svuota il contenitore divide il testo
+  questionText.innerHTML = "";
+
+  const testo = domanda.question?.trim();
+
+  if (!testo) return;
+
+  const parole = testo.split(" ");
+
+  parole.forEach((parola, i) => {
+    const span = document.createElement("span"); //crea uno span per ogni parola
+    span.textContent = i < parole.length - 1 ? parola + " " : parola; //inserisce il testo nello span per mantenere gli spazi tra le parole
+    questionText.appendChild(span); // lo inserisce nel DOM
+  });
+
+  //  sincronizza con il refresh del monitor altrimenti misura prima che le posizioni della frase siano calcolate
+  requestAnimationFrame(function () {
+    const spans = questionText.querySelectorAll("span")
+
+    if (!spans.length) return
+    // misura la posizione verticale della prima e dell'ultima parola
+    const primaY = spans[0].getBoundingClientRect().top //getBoundingClientRect() restituisce la posizione reale dell’elemento sullo schermo e il .top prende la coordinata verticale
+    const ultimaY = spans[spans.length - 1].getBoundingClientRect().top
+
+    // controlla quante righe ci sono
+    if (Math.abs(primaY - ultimaY) < 1) {
+      questionText.textContent = testo
+      return
+    }
+
+    let inizioUltimaRiga = parole.length - 1
+
+    // cerco la prima parola dell’ultima riga scorrendo tutti gli span
+    for (let i = 0; i < spans.length; i++) {
+      const currentY = spans[i].getBoundingClientRect().top
+
+      //controllo se ho trovato l'inizio dell'ultima riga
+      if (Math.abs(currentY - ultimaY) < 1) {
+        inizioUltimaRiga = i 
+        break;
+      }
+    }
+
+    const intro = parole.slice(0, inizioUltimaRiga).join(" ") // creo prima riga
+
+    const ultimaRiga = parole.slice(inizioUltimaRiga).join(" ") // creo ultima riga
+
+    //ricostruisco l'html
+    questionText.innerHTML = `${intro} <strong>${ultimaRiga}</strong>`
+  })
 }
