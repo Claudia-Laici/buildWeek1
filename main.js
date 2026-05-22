@@ -65,11 +65,7 @@ const questions = [
     question:
       "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
-    incorrect_answers: [
-      "Ice Cream Sandwich",
-      "Jelly Bean",
-      "Marshmallow",
-    ],
+    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
   },
   {
     category: "Science: Computers",
@@ -105,18 +101,17 @@ let timeLeft = 30;
 const TEMP_LIMIT = 30; // Secondi per ogni domanda
 let selectedAnswer = null;
 
-
 /*                  TUTTI I DOM SELECTORS BY ID             */
-const welcomeContainer = document.getElementById('welcome-page') // ID HTML riga: 12
-const questPage = document.getElementById('questions-page'); // ID HTML riga: 52
-const proceedBtn = document.getElementById('proceed-btn'); // ID HTML riga: 45
+const welcomeContainer = document.getElementById("welcome-page"); // ID HTML riga: 12
+const questPage = document.getElementById("questions-page"); // ID HTML riga: 52
+const proceedBtn = document.getElementById("proceed-btn"); // ID HTML riga: 45
 const promiseCheckbox = document.getElementById("promise-check"); // ID HTML riga: 40
 
-const questionText = document.getElementById('question-text') // ID HTML riga: 71
-const optionsDiv = document.getElementById('options-container') // ID HTML riga: 72
-const currentQuestNum = document.getElementById('current-quest-num') // ID HTML riga: 78
-const timerProgress = document.getElementById('timer-progress') // ID HTML riga: 59
-const timerCount = document.getElementById('timer-count') // ID HTML riga: 64
+const questionText = document.getElementById("question-text"); // ID HTML riga: 71
+const optionsDiv = document.getElementById("options-container"); // ID HTML riga: 72
+const currentQuestNum = document.getElementById("current-quest-num"); // ID HTML riga: 78
+const timerProgress = document.getElementById("timer-progress"); // ID HTML riga: 59
+const timerCount = document.getElementById("timer-count"); // ID HTML riga: 64
 const finalScore = document.getElementById("final-score"); // ID HTML riga: 89
 const resultsScreen = document.getElementById("results-screen"); // ID HTML riga: 83
 
@@ -143,64 +138,67 @@ proceedBtn.addEventListener("click", function () {
   startExam(); // onclick del button, parte la funzione
 });
 
-
 /* PHASE 2: BENCHMARK | Q&A LOGICA */
 function startExam() {
+  let domanda = questions[questionNumber]; // prendo la domanda corrente dall'array
+  questionText.textContent = domanda.question; // mostro il testo della domanda nel h2
 
-  let domanda = questions[questionNumber];   // prendo la domanda corrente dall'array
-  questionText.textContent = domanda.question;   // mostro il testo della domanda nel h2 
+  let risposte = domanda.incorrect_answers.concat(domanda.correct_answer); // unisco risposte corrette + sbagliate
 
-  let risposte = domanda.incorrect_answers.concat(domanda.correct_answer);    // unisco risposte corrette + sbagliate
-
-  risposte.sort(function () {                        // mescolo le risposte
+  risposte.sort(function () {
+    // mescolo le risposte
     return Math.random() - 0.5;
   });
 
-  optionsDiv.innerHTML = "";                         // svuoto il container delle domande
+  optionsDiv.innerHTML = ""; // svuoto il container delle domande
 
-  for (let i = 0; i < risposte.length; i++) {             // ciclo di tutte le risposte
-    let bottone = document.createElement("button");      // creo un bottone
-    bottone.textContent = risposte[i];                   // assegna il testo della risposta al bottone
-    bottone.classList.add("answer-btn");                // aggiunge classe CSS
+  for (let i = 0; i < risposte.length; i++) {
+    // ciclo di tutte le risposte
+    let bottone = document.createElement("button"); // creo un bottone
+    bottone.textContent = risposte[i]; // assegna il testo della risposta al bottone
+    bottone.classList.add("answer-btn"); // aggiunge classe CSS
 
     bottone.addEventListener("click", function () {
+      selectAnswer(this, risposte[i]); // prova selezione risposta
 
-      if (risposte[i] === domanda.correct_answer) {         // controllo risposta corretta
+      if (risposte[i] === domanda.correct_answer) {
+        // controllo risposta corretta
         score++;
       }
       questionNumber++;
 
-      if (questionNumber < questions.length) {              // prossima domanda se ci sono ancora domande
-        startExam();                                    // ricarica la funzione con la nuova domanda
+      if (questionNumber < questions.length) {
+        // prossima domanda se ci sono ancora domande
+        startExam(); // ricarica la funzione con la nuova domanda
       } else {
         questionText.textContent = "Quiz completato!";
         optionsDiv.innerHTML = "";
 
-        questPage.classList.add("hidden");        // nasconde quiz
+        questPage.classList.add("hidden"); // nasconde quiz
         resultsScreen.classList.remove("hidden"); // mostra risultati
 
-        finalScore.textContent = score;           // mostra punteggio
+        finalScore.textContent = score; // mostra punteggio
       }
     });
-    optionsDiv.appendChild(bottone);                     // aggiungo il bottone nel container
+    optionsDiv.appendChild(bottone); // aggiungo il bottone nel container
   }
-  currentQuestNum.textContent = questionNumber + 1;       // aggiorno numero domanda
+  currentQuestNum.textContent = questionNumber + 1; // aggiorno numero domanda
 }
 
-
-function selectAnswer(selectedButton, textValue) { // vedi su readme.me
+function selectAnswer(selectedButton, textValue) {
+  // vedi su readme.me
   selectedAnswer = textValue; // Evidenza la risposta scelta
 
   const answerBtn = optionsDiv.getElementsByClassName("answer-btn");
-    for (let btn of answerBtn) {
-      btn.classList.remove("selected"); // .selected in CSS: riga 315,
+  for (let btn of answerBtn) {
+    btn.classList.remove("selected"); // .selected in CSS: riga 315,
     /* Prima di evidenziare il pulsante appena cliccato, il codice seleziona tutti i pulsanti di risposta all'interno
-    * del contenitore e rimuove la classe CSS "selected". Questo garantisce che, se l'utente ha precedentemente cliccato su
-    * un'opzione diversa, la precedente evidenziato viene cancellata, e impedisce più pulsanti che appaiano
-    * selezionati contemporaneamente
-    */
-    }
-    selectedButton.classList.add("selected") // .selected in CSS: riga 315
+     * del contenitore e rimuove la classe CSS "selected". Questo garantisce che, se l'utente ha precedentemente cliccato su
+     * un'opzione diversa, la precedente evidenziato viene cancellata, e impedisce più pulsanti che appaiano
+     * selezionati contemporaneamente
+     */
+  }
+  selectedButton.classList.add("selected"); // .selected in CSS: riga 315
 
-// TODO: qui metteremo la FUNCTION che: passa immediatamente alla domanda successiva senza ritardo
+  // TODO: qui metteremo la FUNCTION che: passa immediatamente alla domanda successiva senza ritardo
 }
