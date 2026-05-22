@@ -116,7 +116,7 @@ h1 {
   flex-wrap: wrap;
   gap: 40px;
   margin-top: 20px;
-  min-width: 780px;
+  min-width: 940px;
 }
 
 /* CUSTOM CHECKBOX */
@@ -201,9 +201,10 @@ button {
   .welcome-footer {
     flex-direction: column;
     align-items: center;
-    min-width: unset;
     width: 100%;
+    min-width: 0;
     gap: 15px;
+    outline: 1px solid red;
   }
 }
 
@@ -361,4 +362,8 @@ button {
 .total-questions {
   color: var(--answer-count-color);
   font-weight: 800;
+}
+
+.quiz-content{
+  margin-bottom: 150px;
 }
