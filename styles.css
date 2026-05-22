@@ -42,33 +42,33 @@ body {
 .container {
   /* padding: 1.5rem 2.5rem; */
   width: 100%;
-  max-width: 900px;
-  padding: 40px;
+  max-width: 1100px;
+  padding: 50px;
 }
 
 .logo {
-  max-width: 160px;
-  margin-bottom: 50px;
+  max-width: 200px;
+  margin-bottom: 60px;
 }
 
 /* WELCOME CONTENT PAGE */
 .welcome-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 2rem 2.5rem 4rem; /*da rivedere come la reference se allineare il tutto o lasciarlo così*/
-  max-width: 700px;
+  max-width: 900px;
 }
 
 h1,
 h3 {
   font-family: "Outfit", sans-serif;
-  font-weight: 400;
-  line-height: 1.1;
+  /* font-weight: 400; */
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 3.75rem;
+  font-size: 5rem; /* 3.75rem */
   line-height: 0.8;
   font-weight: 300;
   margin-bottom: 30px;
@@ -76,27 +76,32 @@ h1 {
 
 .highlight-title {
   display: block;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .instructions h3 {
-  font-size: 1.6rem;
+  font-size: 2.2rem; /* 1.6rem */
   font-weight: 700;
   color: var(--answer-button-color);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .instructions p {
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 1.3rem;
+  line-height: 1.6;
 }
 
 .rules {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  padding-left: 1.7rem;
-  margin-top: 20px 0 50px;
-  margin-bottom: 5rem;
+  gap: 1rem; /* 0.45rem */
+  padding-left: 2rem;
+  margin: 40px 0 60px 0;
+  /* margin-top: 20px 0 50px;
+  margin-bottom: 5rem; */
+}
+.rules li {
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .highlight {
@@ -109,7 +114,8 @@ h1 {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
+  margin-top: 20px;
   min-width: 780px;
 }
 
@@ -119,7 +125,7 @@ h1 {
   align-items: center;
   position: relative;
   gap: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.15rem;
   user-select: none;
   cursor: pointer;
 }
@@ -137,45 +143,40 @@ h1 {
 }
 
 .custom-check {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border: 2px solid white;
-  display: inline-block; /* display: flex; */
-  align-items: center;
-  /* justify-content: center; */
+  display: inline-block;
+  /* align-items: center; */
   transition: all 0.2s ease;
 }
 
-/* .checkbox-container input[type="checkbox"]:checked + .custom-check{
-   background: var(--accent-color);
-   border-color: var(--accent-color);
-} */
 .checkbox-container input:checked ~ .custom-check {
   /* ~ guarda in readme.md */
   background-color: var(--accent-color); /* COLOR of BORDER on click */
   border-color: white; /* BORDER COLOR of CHECKBOX */
-  box-shadow: 0 0 8px var(--accent-color); /* SHADOW COLOR */
+  box-shadow: 0 0 12px var(--accent-color); /* SHADOW COLOR */
 }
 
 /* BUTTONS */
 button {
   font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-transform: uppercase;
 }
 
 #proceed-btn {
   padding: 0.938rem 2.813rem; /* 15px 45px */
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   letter-spacing: 1px;
 }
 
 .btn-disabled {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
   pointer-events: none;
 }
 
@@ -184,12 +185,12 @@ button {
   background: var(--accent-color);
   /* box-shadow:0 0 16px rgba(0, 255, 255, 0.45),
               0 0 40px rgba(0, 255, 255, 0.15) ; */
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
   color: #0d1035;
 }
 .btn-enabled:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.9);
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
 }
 
 .hidden {
@@ -297,15 +298,36 @@ button {
   max-width: 800px;
   margin: 40px auto;
 }
+.answer-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 18px 30px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+.answer-btn:hover {
+  background: rgba(255, 255, 255, 0.1);;
+}
+.answer-btn.selected {
+  background: var(--answer-button-color);
+  border-color: var(--answer-button-color);
+  box-shadow: 0 0 15px var(--answer-count-color);
+}
 
 .progress-indicator{
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
   gap: 5px;
 }
 
 .total-questions {
   color: var(--answer-count-color);
-  font-weight: 600;
+  font-weight: 800;
 }
