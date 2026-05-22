@@ -149,3 +149,11 @@ const TEMP_LIMIT = 30; // Secondi per ogni domanda
 let selectedAnswer = null;
 // Memorizza temporaneamente il testo della risposta su cui l'utente ha cliccato prima di procedere
 // Inizia come NULL perchè non è stata ancora selezionata alcuna risposta
+
+
+### JS function: selectAnswer() // riga 191 ###
+la funzione, selectedAnswer(), è responsabile della gestione di ciò che accade nel momento esatto in cui un utente clicca su un pulsante/buttone di risposta durante il quiz.
+In poche parole, svolge tre compiti principali
+- Registra la scelta dell'utente,
+- aggiorna UI,
+- e procede nel prossimo

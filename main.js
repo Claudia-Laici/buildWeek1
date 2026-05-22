@@ -172,9 +172,7 @@ function startExam() {
 
       if (questionNumber < questions.length) {              // prossima domanda se ci sono ancora domande
         startExam();                                    // ricarica la funzione con la nuova domanda
-
       } else {
-
         questionText.textContent = "Quiz completato!";
         optionsDiv.innerHTML = "";
 
@@ -184,9 +182,25 @@ function startExam() {
         finalScore.textContent = score;           // mostra punteggio
       }
     });
-
     optionsDiv.appendChild(bottone);                     // aggiungo il bottone nel container
   }
-
   currentQuestNum.textContent = questionNumber + 1;       // aggiorno numero domanda
+}
+
+
+function selectAnswer(selectedButton, textValue) { // vedi su readme.me
+  selectedAnswer = textValue; // Evidenza la risposta scelta
+
+  const answerBtn = optionsDiv.getElementsByClassName("answer-btn");
+    for (let btn of answerBtn) {
+      btn.classList.remove("selected"); // .selected in CSS: riga 315,
+    /* Prima di evidenziare il pulsante appena cliccato, il codice seleziona tutti i pulsanti di risposta all'interno
+    * del contenitore e rimuove la classe CSS "selected". Questo garantisce che, se l'utente ha precedentemente cliccato su
+    * un'opzione diversa, la precedente evidenziato viene cancellata, e impedisce più pulsanti che appaiano
+    * selezionati contemporaneamente
+    */
+    }
+    selectedButton.classList.add("selected") // .selected in CSS: riga 315
+
+// TODO: qui metteremo la FUNCTION che: passa immediatamente alla domanda successiva senza ritardo
 }
