@@ -326,12 +326,11 @@ button {
     rgba(255,255,255,0.1) 80%
   );
 
-  -webkit-mask:
-   linear-gradient(#fff, #fff) content-box, /* ho applicato due mask sovrapposte la prima crea una maschera piena senza sfumatura*/
-   linear-gradient(#fff, #fff); /* seconda mask = area completa dell'elemento */
-  mask:
-   linear-gradient(#fff, #fff) content-box,
-   linear-gradient(#fff, #fff);
+  mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
+  mask-clip: content-box, border-box;
+  mask-origin: content-box, border-box;
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-origin: content-box, border-box;
 
   -webkit-mask-composite: xor; /* (xor / exclude) mostrano solo le aree dove le due mask non si sovrappongono, e hanno nomenclature diverse per l'uso dei browser*/
           mask-composite: exclude; /*-webkit-mask-composite: xor è per safari mentre mask-compisite: exclude è per Chrome, Firefox, Edge ecc... */
