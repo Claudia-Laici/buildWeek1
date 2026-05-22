@@ -117,6 +117,12 @@ const resultsScreen = document.getElementById("results-screen"); // ID HTML riga
 
 /*const welcomePage = document.querySelector(".welcome-content"); --> questo era errato in quanto avevamo già la funzione sopra welcomeContainer che era quella giusta per nascondere tutti gli elementi*/
 
+questions.sort(function () {
+  // mescolo le risposte
+  return Math.random() - 0.5;
+});
+
+
 promiseCheckbox.addEventListener("change", function () {
   if (this.checked) {
     proceedBtn.disabled = false;
