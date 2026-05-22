@@ -315,20 +315,25 @@ button {
 }
 
 .answer-btn::before { 
-  content: '';
+
+  content: "";
   position: absolute;
   inset: 0;
-  border-radius: 50px;
   padding: 3px;
+  border-radius: 50px;
   background: linear-gradient(
     to bottom,
     rgba(255,255,255,0.75) 0%,
     rgba(255,255,255,0.1) 80%
   );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, /* ho applicato due mask sovrapposte la prima crea una maschera piena senza sfumatura*/
-                linear-gradient(#fff 0 0); /* la seconda crea tutto il bordo + interno*/
+
+  -webkit-mask:
+   linear-gradient(#fff, #fff) content-box, /* ho applicato due mask sovrapposte la prima crea una maschera piena senza sfumatura*/
+   linear-gradient(#fff, #fff); /* seconda mask = area completa dell'elemento */
+
   -webkit-mask-composite: xor; /* (xor / exclude) mostrano solo le aree dove le due mask non si sovrappongono, e hanno nomenclature diverse per l'uso dei browser*/
-  mask-composite: exclude; /*-webkit-mask-composite: xor è per safari mentre mask-compisite: exclude è per Chrome, Firefox, Edge ecc... */
+          mask-composite: exclude; /*-webkit-mask-composite: xor è per safari mentre mask-compisite: exclude è per Chrome, Firefox, Edge ecc... */
+
   z-index: -1; /* è il livello del layout dove viene applicato e cioè dietro il bottone altrimenti non sarebbe cliccabile*/
 }
 
