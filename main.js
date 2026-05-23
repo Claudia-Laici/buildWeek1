@@ -145,7 +145,7 @@ function startTimer() {
   /* Inizio aggiornamento del DOM per i numeri del timer e il cerchio */
   timerCount.textContent = timeLeft;
   timerProgress.style.strokeDashoffset = 0; // style.strokeDashoffset: README.md riga 216
-
+  timerProgress.style.stroke = "#00ffff"
   timerInterval = setInterval(function () {
     timeLeft--;
     timerCount.textContent = timeLeft;
