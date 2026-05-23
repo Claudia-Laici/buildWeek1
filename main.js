@@ -101,6 +101,8 @@ let timeLeft = 30;
 const TEMP_LIMIT = 30; // Secondi per ogni domanda
 let selectedAnswer = null;
 
+const TIMER_SVG = 339; // guarda su READM.md
+
 /*                  TUTTI I DOM SELECTORS BY ID             */
 const welcomeContainer = document.getElementById("welcome-page"); // ID HTML riga: 12
 const questPage = document.getElementById("questions-page"); // ID HTML riga: 52
@@ -115,11 +117,8 @@ const timerCount = document.getElementById("timer-count"); // ID HTML riga: 64
 const finalScore = document.getElementById("final-score"); // ID HTML riga: 89
 const resultsScreen = document.getElementById("results-screen"); // ID HTML riga: 83
 
-/*const welcomePage = document.querySelector(".welcome-content"); --> questo era errato in quanto avevamo già la funzione sopra welcomeContainer che era quella giusta per nascondere tutti gli elementi*/
-
 questions.sort(function () {
-  // mescolo le risposte
-  return Math.random() - 0.5;
+  return Math.random() - 0.5; // mescolo le risposte
 });
 
 promiseCheckbox.addEventListener("change", function () {
@@ -131,37 +130,70 @@ promiseCheckbox.addEventListener("change", function () {
     proceedBtn.className = "btn-disabled";
   }
 });
-/*
-proceedBtn.addEventListener("click", function () {
-    welcomePage.style.display = "none";
-    divQuestions.classList.remove("hidden");
-});
-*/
+
 proceedBtn.addEventListener("click", function () {
   welcomeContainer.classList.add("hidden"); // .hidden class in CSS
   questPage.classList.remove("hidden");
   startExam(); // onclick del button, parte la funzione
 });
 
+/* TIMER */
+function startTimer() {
+  clearInterval(timerInterval); // clearInterval(): README.md riga 213
+    timeLeft = TEMP_LIMIT; // Reimposta il tempo rimanente alla durata massima
+
+    /* Inizio aggiornamento del DOM per i numeri del timer e il cerchio */
+    timerCount.textContent = timeLeft; 
+    timerProgress.style.strokeDashoffset = 0; // style.strokeDashoffset: README.md riga 216
+
+    timerInterval = setInterval(function () {
+      timeLeft--;
+      timerCount.textContent = timeLeft;
+
+      const offset = TIMER_SVG - (timeLeft / TEMP_LIMIT) * TIMER_SVG; // Calcola l'offset del trattegio del cerchio SVG per svuotare la linea del cerchio colorato nel tempo
+      timerProgress.style,strokeDashoffset = offset;
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        handleNextQuestion(); // Salta la domanda quando finiscono i secondi
+      }
+    }, 1000); // 1000: sono millisecondi, quindi rappresenta 1 second 
+}
+
+/* Un intermedio per gestire il procedimento delle domande e la pagina/screen finale */
+function handleNextQuestion() {
+  questionNumber++;
+
+  if (questionNumber < questions.length) {
+    startExam(); // 
+  } else {
+    clearInterval(timerInterval);
+    questionText.textContent = "Quiz completato!";
+    optionsDiv.innerHTML= "";
+
+    questPage.classList.add("hidden");
+    resultsScreen.classList.remove("hidden");
+
+    finalScore.textContent = score;
+  }
+} 
+
 /* PHASE 2: BENCHMARK | Q&A LOGICA */
 function startExam() {
+  startTimer(); // Parte il timer immediatamente appena si caricano le domande
+
   let domanda = questions[questionNumber]; // prendo la domanda corrente dall'array
-  renderQuestion(
-    domanda,
-  ); /*passo il parametro per controllare se il testo è accapo o no*/
-  /*questionText.textContent = domanda.question; // mostro il testo della domanda nel h2*/
+  renderQuestion(domanda); // passo il parametro per controllare se il testo è accapo o no
 
   let risposte = domanda.incorrect_answers.concat(domanda.correct_answer); // unisco risposte corrette + sbagliate
 
   risposte.sort(function () {
-    // mescolo le risposte
-    return Math.random() - 0.5;
+    return Math.random() - 0.5; // mescolo le risposte
   });
 
   optionsDiv.innerHTML = ""; // svuoto il container delle domande
 
-  for (let i = 0; i < risposte.length; i++) {
-    // ciclo di tutte le risposte
+  for (let i = 0; i < risposte.length; i++) {  // ciclo di tutte le risposte
     let bottone = document.createElement("button"); // creo un bottone
     bottone.textContent = risposte[i]; // assegna il testo della risposta al bottone
     bottone.classList.add("answer-btn"); // aggiunge classe CSS
@@ -169,12 +201,14 @@ function startExam() {
     bottone.addEventListener("click", function () {
       selectAnswer(this, risposte[i]); // prova selezione risposta
 
-      if (risposte[i] === domanda.correct_answer) {
-        // controllo risposta corretta
+      if (risposte[i] === domanda.correct_answer) { // controllo risposta corretta
         score++;
       }
-      questionNumber++;
+      // questionNumber++;
 
+      clearInterval(timerInterval);
+      handleNextQuestion();
+      /*
       if (questionNumber < questions.length) {
         // prossima domanda se ci sono ancora domande
         startExam(); // ricarica la funzione con la nuova domanda
@@ -187,14 +221,15 @@ function startExam() {
 
         finalScore.textContent = score; // mostra punteggio
       }
+      */
     });
     optionsDiv.appendChild(bottone); // aggiungo il bottone nel container
   }
   currentQuestNum.textContent = questionNumber + 1; // aggiorno numero domanda
 }
 
-function selectAnswer(selectedButton, textValue) {
-  // vedi su readme.me
+
+function selectAnswer(selectedButton, textValue) {   // vedi su readme.me
   selectedAnswer = textValue; // Evidenza la risposta scelta
 
   const answerBtn = optionsDiv.getElementsByClassName("answer-btn");
@@ -213,8 +248,7 @@ function selectAnswer(selectedButton, textValue) {
 
 /*Funzione per far si che ogni volta che la domanda va accapo si mette il grassetto come nella reference*/
 function renderQuestion(domanda) { // la funzione viene spiegata anche nel readme
-  // svuota il contenitore divide il testo
-  questionText.innerHTML = "";
+  questionText.innerHTML = "";   // svuota il contenitore divide il testo
 
   const testo = domanda.question?.trim();
 
@@ -228,8 +262,8 @@ function renderQuestion(domanda) { // la funzione viene spiegata anche nel readm
     questionText.appendChild(span); // lo inserisce nel DOM
   });
 
-  //  sincronizza con il refresh del monitor altrimenti misura prima che le posizioni della frase siano calcolate
-  requestAnimationFrame(function () {
+
+  requestAnimationFrame(function () { //  sincronizza con il refresh del monitor altrimenti misura prima che le posizioni della frase siano calcolate
     const spans = questionText.querySelectorAll("span")
 
     if (!spans.length) return
@@ -237,27 +271,23 @@ function renderQuestion(domanda) { // la funzione viene spiegata anche nel readm
     const primaY = spans[0].getBoundingClientRect().top //getBoundingClientRect() restituisce la posizione reale dell’elemento sullo schermo e il .top prende la coordinata verticale
     const ultimaY = spans[spans.length - 1].getBoundingClientRect().top
 
-    // controlla quante righe ci sono
-    if (Math.abs(primaY - ultimaY) < 1) {
+    if (Math.abs(primaY - ultimaY) < 1) { // controlla quante righe ci sono
       questionText.textContent = testo
       return
     }
 
     let inizioUltimaRiga = parole.length - 1
 
-    // cerco la prima parola dell’ultima riga scorrendo tutti gli span
-    for (let i = 0; i < spans.length; i++) {
+    for (let i = 0; i < spans.length; i++) { // cerco la prima parola dell’ultima riga scorrendo tutti gli span
       const currentY = spans[i].getBoundingClientRect().top
 
-      //controllo se ho trovato l'inizio dell'ultima riga
-      if (Math.abs(currentY - ultimaY) < 1) {
+      if (Math.abs(currentY - ultimaY) < 1) { //controllo se ho trovato l'inizio dell'ultima riga
         inizioUltimaRiga = i 
         break;
       }
     }
 
     const intro = parole.slice(0, inizioUltimaRiga).join(" ") // creo prima riga
-
     const ultimaRiga = parole.slice(inizioUltimaRiga).join(" ") // creo ultima riga
 
     //ricostruisco l'html

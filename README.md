@@ -196,3 +196,23 @@ In poche parole, svolge tre compiti principali
 - Registra la scelta dell'utente,
 - aggiorna UI,
 - e procede nel prossimo
+
+
+### JS: TIMER_SVG = 339 // riga 104
+Perchè "339"? Questo è la logica:
+Costante per il PERIMETRO del CERCHIO SVG,
+2= r*r (diametro)
+PI= PI greco, 3,14 (3,14159)
+r= raggio // 54, riga 58 & 59 in HTML
+FORMULA Matematico: (2 * PI * r) = 2 * 3,14159 * 54 = circa 339,29
+
+2 * PI = 6.28318
+6.28318 * 54 (r) = 339.29172
+Circonferenza = 339
+
+### JS: clearInterval() // riga 144
+E' una funzione nativa utilizzata per bloccare l'esecuzione di un timer ciclico precedentemente avviato tramie setInterval()
+
+### JS: style.strokeDashoffset // riga 148
+- style.strokeDashoffset
+E' una proprietà usata per manipolare l'omonima proprietà CSS 'strokeDashoffset'
