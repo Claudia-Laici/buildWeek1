@@ -140,24 +140,27 @@ proceedBtn.addEventListener("click", function () {
 /* TIMER */
 function startTimer() {
   clearInterval(timerInterval); // clearInterval(): README.md riga 213
-    timeLeft = TEMP_LIMIT; // Reimposta il tempo rimanente alla durata massima
+  timeLeft = TEMP_LIMIT; // Reimposta il tempo rimanente alla durata massima
 
-    /* Inizio aggiornamento del DOM per i numeri del timer e il cerchio */
-    timerCount.textContent = timeLeft; 
-    timerProgress.style.strokeDashoffset = 0; // style.strokeDashoffset: README.md riga 216
+  /* Inizio aggiornamento del DOM per i numeri del timer e il cerchio */
+  timerCount.textContent = timeLeft;
+  timerProgress.style.strokeDashoffset = 0; // style.strokeDashoffset: README.md riga 216
 
-    timerInterval = setInterval(function () {
-      timeLeft--;
-      timerCount.textContent = timeLeft;
+  timerInterval = setInterval(function () {
+    timeLeft--;
+    timerCount.textContent = timeLeft;
 
-      const offset = TIMER_SVG - (timeLeft / TEMP_LIMIT) * TIMER_SVG; // Calcola l'offset del trattegio del cerchio SVG per svuotare la linea del cerchio colorato nel tempo
-      timerProgress.style.strokeDashoffset = offset;
+    const offset = TIMER_SVG - (timeLeft / TEMP_LIMIT) * TIMER_SVG; // Calcola l'offset del trattegio del cerchio SVG per svuotare la linea del cerchio colorato nel tempo
+    timerProgress.style.strokeDashoffset = offset;
 
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        handleNextQuestion(); // Salta la domanda quando finiscono i secondi
-      }
-    }, 1000); // 1000: sono millisecondi, quindi rappresenta 1 second 
+    if (timeLeft <= 10) {
+      timerProgress.style.stroke = "#ff4444"; // ← diventa rosso
+    }
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      handleNextQuestion(); // Salta la domanda quando finiscono i secondi
+    }
+  }, 1000); // 1000: sono millisecondi, quindi rappresenta 1 second 
 }
 
 /* Un intermedio per gestire il procedimento delle domande e la pagina/screen finale */
@@ -169,14 +172,14 @@ function handleNextQuestion() {
   } else {
     clearInterval(timerInterval);
     questionText.textContent = "Quiz completato!";
-    optionsDiv.innerHTML= "";
+    optionsDiv.innerHTML = "";
 
     questPage.classList.add("hidden");
     resultsScreen.classList.remove("hidden");
 
     finalScore.textContent = score;
   }
-} 
+}
 
 /* PHASE 2: BENCHMARK | Q&A LOGICA */
 function startExam() {
@@ -282,7 +285,7 @@ function renderQuestion(domanda) { // la funzione viene spiegata anche nel readm
       const currentY = spans[i].getBoundingClientRect().top
 
       if (Math.abs(currentY - ultimaY) < 1) { //controllo se ho trovato l'inizio dell'ultima riga
-        inizioUltimaRiga = i 
+        inizioUltimaRiga = i
         break;
       }
     }
