@@ -372,7 +372,21 @@ button {
   font-weight: 800;
 }
 
+/* RESULT CONTAINER: ultima pagina */
+.text-center {
+  text-align: center;
+}
+.results-content h1 {
+  margin-bottom: 20px;
+}
+.display-score {
+  font-size: 1.8rem;
+}
+#final-score {
+  color: var(--answer-button-color);
+}
 
-.bold-last {
+
+.bold-last { /* questo per? */
   font-weight: 700;
 }
