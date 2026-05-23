@@ -151,7 +151,7 @@ function startTimer() {
       timerCount.textContent = timeLeft;
 
       const offset = TIMER_SVG - (timeLeft / TEMP_LIMIT) * TIMER_SVG; // Calcola l'offset del trattegio del cerchio SVG per svuotare la linea del cerchio colorato nel tempo
-      timerProgress.style,strokeDashoffset = offset;
+      timerProgress.style.strokeDashoffset = offset;
 
       if (timeLeft <= 0) {
         clearInterval(timerInterval);
