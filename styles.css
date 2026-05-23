@@ -386,9 +386,30 @@ button {
   color: var(--answer-button-color);
 }
 
-
-.bold-last { /* questo per? */
-  font-weight: 700;
+/* SHAKE Animation */
+@keyframes shakeAnimation {
+  0% {
+    transform: translate(0,0);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    transform: translate(1px, -1px);
+  }
+  60% {
+    transform: translate(-1px, 2px);
+  }
+  80% {
+    transform: translate(2px, -1px);
+  }
+  100% {
+    transform: translate(0,0);
+  }
 }
 
-
+.timer-shake {
+  display: inline-block;
+  animation: shakeAnimation 0.3s infinite linear;
+  color: #ff4444 !important;
+}

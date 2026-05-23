@@ -117,6 +117,10 @@ const timerCount = document.getElementById("timer-count"); // ID HTML riga: 64
 const finalScore = document.getElementById("final-score"); // ID HTML riga: 89
 const resultsScreen = document.getElementById("results-screen"); // ID HTML riga: 83
 
+// const timerShake = document.querySelector(".timer-text") // ID HTML riga: 62
+
+
+
 questions.sort(function () {
   return Math.random() - 0.5; // mescolo le risposte
 });
@@ -146,6 +150,9 @@ function startTimer() {
   timerCount.textContent = timeLeft;
   timerProgress.style.strokeDashoffset = 0; // style.strokeDashoffset: README.md riga 216
   timerProgress.style.stroke = "#00ffff" //  resetta colore ad ogni domanda
+
+  timerCount.classList.remove("timer-shake"); // Rimuove l'animazione 'shake' all'inizio di una nuova domanda
+
   timerInterval = setInterval(function () {
     timeLeft--;
     timerCount.textContent = timeLeft;
@@ -155,9 +162,11 @@ function startTimer() {
 
     if (timeLeft <= 10) {
       timerProgress.style.stroke = "#ff4444"; // ← diventa rosso
+      timerCount.classList.add("timer-shake"); // Attiva la vibrazione effect
     }
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
+      timerCount.classList.remove("timer-shake") // Rimuove l'effetto shake prima di cambiare pagina
       handleNextQuestion(); // Salta la domanda quando finiscono i secondi
     }
   }, 1000); // 1000: sono millisecondi, quindi rappresenta 1 second 
