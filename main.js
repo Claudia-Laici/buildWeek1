@@ -145,7 +145,7 @@ function startTimer() {
   /* Inizio aggiornamento del DOM per i numeri del timer e il cerchio */
   timerCount.textContent = timeLeft;
   timerProgress.style.strokeDashoffset = 0; // style.strokeDashoffset: README.md riga 216
-  timerProgress.style.stroke = "#00ffff"
+  timerProgress.style.stroke = "#00ffff" //  resetta colore ad ogni domanda
   timerInterval = setInterval(function () {
     timeLeft--;
     timerCount.textContent = timeLeft;
@@ -211,20 +211,7 @@ function startExam() {
 
       clearInterval(timerInterval);
       handleNextQuestion();
-      /*
-      if (questionNumber < questions.length) {
-        // prossima domanda se ci sono ancora domande
-        startExam(); // ricarica la funzione con la nuova domanda
-      } else {
-        questionText.textContent = "Quiz completato!";
-        optionsDiv.innerHTML = "";
 
-        questPage.classList.add("hidden"); // nasconde quiz
-        resultsScreen.classList.remove("hidden"); // mostra risultati
-
-        finalScore.textContent = score; // mostra punteggio
-      }
-      */
     });
     optionsDiv.appendChild(bottone); // aggiungo il bottone nel container
   }
