@@ -165,6 +165,10 @@ L'operatore tilde in CSS ( ~ )
 noto come combinatore di fratelli successivi, seleziona un elemento che segue un altro specifico elemento (condividendo lo stesso genitore).
 NON richiede che l'elemento sia immediatamente successivo, ma può trovarsi ovunque più avanti nel documento
 
+### CSS: flex-shrink: 0;  // riga 136
+Stabilisce quanto un elemento (flex-item) può ridursi rispetto agli altri elementi quando lo spazio all'interno del contenitore è limitato.
+Il default numero è 'flex-shrink: 1', se impostiamo a 'flex-shrink: 0;' l'elemento non diventerà mai piccolo, mantenendo le sue dimensioni originali.
+
 ### JS: riga 101 - 106 ###
 let currentQuestion = 0;
 // Tiene traccia del numero della domanda che l'utente sta visualizzando, inizia da

@@ -30,25 +30,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
-/* // QUESTI li ho messi su background: riga 24
-body {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
-*/
 
 .container {
-  /* padding: 1.5rem 2.5rem; */
   width: 100%;
   max-width: 1100px;
-  padding: 50px;
+  padding: 40px 20px;
+  margin: 0;
 }
 
 .logo {
   max-width: 150px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 /* WELCOME CONTENT PAGE */
@@ -56,20 +50,18 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  /*padding: 2rem 2.5rem 4rem; da rivedere come la reference se allineare il tutto o lasciarlo così*/
   max-width: 800px;
 }
 
 h1,
 h3 {
   font-family: "Outfit", sans-serif;
-  /* font-weight: 400; */
   line-height: 1.2;
 }
 
 h1 {
-  font-size: 4rem; /* 3.75rem */
-  line-height: 0.8;
+  font-size: 4rem;
+  line-height: 1.1; /* 0.8 */
   font-weight: 300;
   margin-bottom: 10px;
   margin-top: 50px;
@@ -81,7 +73,7 @@ h1 {
 }
 
 .instructions h3 {
-  font-size: 2rem; /* 1.6rem */
+  font-size: 2rem;
   font-weight: 700;
   color: var(--answer-button-color);
   margin-bottom: 15px;
@@ -94,14 +86,12 @@ h1 {
 .rules {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* 0.45rem */
-  padding-left: 2rem;
+  gap: 1rem;
+  padding-left: 1.5rem;
   margin: 40px 0 60px 0;
-  /* margin-top: 20px 0 50px;
-  margin-bottom: 5rem; */
 }
 .rules li {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1.5;
 }
 
@@ -114,9 +104,9 @@ h1 {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 30px;
   margin-top: 20px;
-  min-width: 940px;
+  width: 100%; /* tolto min-width: 940px; per avere la responsive */
 }
 
 /* CUSTOM CHECKBOX */
@@ -124,16 +114,13 @@ h1 {
   display: flex;
   align-items: center;
   position: relative;
-  gap: 0.5rem;
-  font-size: 1.15rem;
+  gap: 0.75rem;
+  font-size: 1.1rem;
   user-select: none;
   cursor: pointer;
+  max-width: 100%;
 }
 
-/* .checkbox-container input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-} */
 .checkbox-container input {
   position: absolute;
   height: 0;
@@ -146,12 +133,11 @@ h1 {
   height: 25px;
   border: 2px solid white;
   display: inline-block;
-  /* align-items: center; */
+  flex-shrink: 0; /* vedi su README.md, riga 168 */
   transition: all 0.2s ease;
 }
 
-.checkbox-container input:checked ~ .custom-check {
-  /* ~ guarda in readme.md */
+.checkbox-container input:checked ~ .custom-check {   /* ~ guarda in readme.md */
   background-color: var(--accent-color); /* COLOR of BORDER on click */
   border-color: white; /* BORDER COLOR of CHECKBOX */
   box-shadow: 0 0 12px var(--accent-color); /* SHADOW COLOR */
@@ -182,8 +168,6 @@ button {
 /* CSS per JS */
 .btn-enabled {
   background: var(--accent-color);
-  /* box-shadow:0 0 16px rgba(0, 255, 255, 0.45),
-              0 0 40px rgba(0, 255, 255, 0.15) ; */
   box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
   color: #0d1035;
 }
@@ -193,7 +177,7 @@ button {
 }
 
 .hidden {
-  display: none !important; /*quando è possibile sarebbe da togliere l'!important, non l'ho tolto perché non so se vi serve ancora*/
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -210,26 +194,22 @@ button {
 .exam-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  /*align-items: center;*/
-  margin-bottom: 150px;
+  /* align-items: flex-start; */
+  align-items: center;
+  margin-bottom: 60px; /* da 150px a 60px, ho diminuito per adattarlo al VH*/
 }
 
 .logo-small {
-  max-width: 150px;
+  max-width: 130px;
 }
 
 .timer-container {
   position: relative;
   width: 120px; /*era 100*/
   height: 120px; /*era 100*/
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 }
 
 .timer-svg {
-  /* position: absolute; */
   transform: rotate(-90deg);
   width: 100%;
   height: 100%;
@@ -261,9 +241,6 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* font-family:  "Inter", sans-serif;
-  align-items: center;
-  font-size: 0.7rem; */
 }
 .timer-top {
   font-size: 0.5rem;
@@ -284,8 +261,8 @@ button {
   font-size: 2rem;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 80px;
-  line-height: 1.3;
+  margin-bottom: 50px; /* prima: 80px */
+  line-height: 1.4;
   color: white;
 }
 
@@ -304,7 +281,7 @@ button {
   background: rgba(255, 255, 255, 0.05);
   /*2px solid rgba(255, 255, 255, 0.2);*/
   border-radius: 50px;
-  padding: 25px 30px;
+  padding: 20px 25px;
   color: white;
   font-size: 1rem;
   font-weight: 600;
@@ -352,9 +329,6 @@ button {
     rgba(255, 255, 255, 0.9) 20%,
     var(--answer-count-color) 100%
   );
-  /*background: var(--answer-button-color);
-  border-color: var(--answer-button-color);
-  box-shadow: 0 0 15px var(--answer-count-color);*/
 }
 
 .progress-indicator {
@@ -364,7 +338,7 @@ button {
   font-size: 1.2rem;
   letter-spacing: 2px;
   gap: 5px;
-  margin-top: 150px;
+  margin-top: 60px;
 }
 
 .total-questions {
@@ -376,6 +350,14 @@ button {
 .text-center {
   text-align: center;
 }
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 40px;
+}
+
 .results-content h1 {
   margin-bottom: 20px;
 }
@@ -413,3 +395,5 @@ button {
   animation: shakeAnimation 0.3s infinite linear;
   color: #ff4444 !important;
 }
+
+/* MEDIA QUERY per responsive */
