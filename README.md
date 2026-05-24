@@ -87,7 +87,7 @@ Il pulsante **Proceed** deve rimanere:
 - Una domanda alla volta
 - Risposte multiple / vero-falso
 - Cambio automatico domanda appena si clicca sulla risposta
-- Timer di 60 secondi
+- Timer 
 
 <br>
 
