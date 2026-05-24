@@ -101,7 +101,7 @@ let timeLeft = 30;
 const TEMP_LIMIT = 30; // Secondi per ogni domanda
 let selectedAnswer = null;
 
-const TIMER_SVG = 339; // guarda su READM.md
+const TIMER_SVG = 339; // guarda su README.md
 
 /*                  TUTTI I DOM SELECTORS BY ID             */
 const welcomeContainer = document.getElementById("welcome-page"); // ID HTML riga: 12
@@ -280,7 +280,7 @@ function renderQuestion(domanda) { // la funzione viene spiegata anche nel readm
     for (let i = 0; i < spans.length; i++) { // cerco la prima parola dell’ultima riga scorrendo tutti gli span
       const currentY = spans[i].getBoundingClientRect().top
 
-      if (Math.abs(currentY - ultimaY) < 1) { //controllo se ho trovato l'inizio dell'ultima riga
+      if (Math.abs(currentY - ultimaY) < 1) { // controllo se ho trovato l'inizio dell'ultima riga
         inizioUltimaRiga = i
         break;
       }
