@@ -384,7 +384,7 @@ button {
 .timer-shake {
   display: inline-block;
   animation: shakeAnimation 0.3s infinite linear;
-  color: #ff4444 !important;
+  color: #ff4444;
 }
 
 /* MEDIA QUERY per responsive */
