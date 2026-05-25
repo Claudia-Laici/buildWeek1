@@ -98,7 +98,7 @@ let questionNumber = 0;
 let score = 0;
 let timerInterval = null;
 let timeLeft = 30;
-const TEMP_LIMIT = 30; // Secondi per ogni domanda
+const TEMP_LIMIT = 60; // Secondi per ogni domanda
 let selectedAnswer = null;
 
 const TIMER_SVG = 339; // guarda su README.md
